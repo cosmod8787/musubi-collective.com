@@ -4,19 +4,19 @@ export default function AboutPage() {
   return (
     <>
       {/* Header */}
-      <section className="px-6 md:px-16 py-20 md:py-28 border-b border-surface">
+      <section className="px-4 sm:px-6 md:px-16 py-16 sm:py-20 md:py-28 border-b border-surface">
         <div className="max-w-7xl mx-auto">
           <p className="font-body text-xs tracking-widest uppercase text-muted mb-4">
             Wer wir sind
           </p>
-          <h1 className="font-heading text-6xl md:text-8xl text-sand tracking-tight leading-none">
+          <h1 className="font-heading text-5xl sm:text-6xl md:text-8xl text-sand tracking-tight leading-none">
             Über uns
           </h1>
         </div>
       </section>
 
       {/* Konzept */}
-      <section className="px-6 md:px-16 py-20 md:py-32 border-b border-surface bg-surface">
+      <section className="px-4 sm:px-6 md:px-16 py-14 sm:py-20 md:py-32 border-b border-surface bg-surface">
         <div className="max-w-7xl mx-auto grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20">
           <div>
             <p className="font-body text-xs tracking-widest uppercase text-muted sticky top-24">
@@ -42,9 +42,9 @@ export default function AboutPage() {
       </section>
 
       {/* Zitat */}
-      <section className="px-6 md:px-16 py-20 md:py-28 bg-red border-b border-surface">
+      <section className="px-4 sm:px-6 md:px-16 py-14 sm:py-20 md:py-28 bg-red border-b border-surface">
         <div className="max-w-4xl mx-auto">
-          <blockquote className="font-heading text-4xl md:text-6xl text-sand leading-tight">
+          <blockquote className="font-heading text-3xl sm:text-4xl md:text-6xl text-sand leading-tight">
             &ldquo;Gut fühlen,
             <br />
             nicht nur gut aussehen.&rdquo;
@@ -53,7 +53,7 @@ export default function AboutPage() {
       </section>
 
       {/* Manifest */}
-      <section className="px-6 md:px-16 py-20 md:py-32 border-b border-surface bg-surface">
+      <section className="px-4 sm:px-6 md:px-16 py-14 sm:py-20 md:py-32 border-b border-surface bg-surface">
         <div className="max-w-7xl mx-auto grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20">
           <div>
             <p className="font-body text-xs tracking-widest uppercase text-muted sticky top-24">
@@ -86,7 +86,7 @@ export default function AboutPage() {
       </section>
 
       {/* Werte */}
-      <section className="px-6 md:px-16 py-20 md:py-32 border-b border-surface">
+      <section className="px-4 sm:px-6 md:px-16 py-14 sm:py-20 md:py-32 border-b border-surface">
         <div className="max-w-7xl mx-auto">
           <p className="font-body text-xs tracking-widest uppercase text-muted mb-12">
             Wofür wir stehen
@@ -124,7 +124,7 @@ export default function AboutPage() {
       </section>
 
       {/* Kontakt */}
-      <section className="px-6 md:px-16 py-20 md:py-28 bg-surface">
+      <section className="px-4 sm:px-6 md:px-16 py-14 sm:py-20 md:py-28 bg-surface">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
           <div>
             <p className="font-body text-xs tracking-widest uppercase text-red mb-6">
@@ -163,7 +163,7 @@ export default function AboutPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-10 px-6 md:px-16 bg-surface">
+      <footer className="border-t border-border py-10 px-4 sm:px-6 md:px-16 bg-surface">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <Link href="/" className="font-heading text-xl tracking-widest uppercase text-sand">
             Bridge 'n' Bass

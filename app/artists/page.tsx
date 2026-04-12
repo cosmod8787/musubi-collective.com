@@ -65,21 +65,21 @@ export default function ArtistsPage() {
   return (
     <>
       {/* Header */}
-      <section className="px-6 md:px-16 py-20 md:py-28 border-b border-border bg-surface">
+      <section className="px-4 sm:px-6 md:px-16 py-16 sm:py-20 md:py-28 border-b border-border bg-surface">
         <div className="max-w-7xl mx-auto">
           <p className="font-body text-xs tracking-widest uppercase text-muted mb-4">
             Das Kollektiv
           </p>
-          <h1 className="font-heading text-6xl md:text-8xl text-sand tracking-tight leading-none">
+          <h1 className="font-heading text-5xl sm:text-6xl md:text-8xl text-sand tracking-tight leading-none">
             Künstler:innen
           </h1>
         </div>
       </section>
 
       {/* Künstler Grid */}
-      <section className="px-6 md:px-16 py-16 md:py-24">
+      <section className="px-4 sm:px-6 md:px-16 py-10 sm:py-16 md:py-24">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 md:gap-10">
             {artists.map((artist, i) => (
               <article key={i} className="group">
                 <div
@@ -105,7 +105,7 @@ export default function ArtistsPage() {
       </section>
 
       {/* Mitmachen CTA */}
-      <section className="px-6 md:px-16 py-20 md:py-28 bg-surface border-t border-border">
+      <section className="px-4 sm:px-6 md:px-16 py-16 sm:py-20 md:py-28 bg-surface border-t border-border">
         <div className="max-w-7xl mx-auto text-center">
           <p className="font-body text-xs tracking-widest uppercase text-red mb-6">
             — Teil davon werden
@@ -128,7 +128,7 @@ export default function ArtistsPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-10 px-6 md:px-16 bg-surface">
+      <footer className="border-t border-border py-10 px-4 sm:px-6 md:px-16 bg-surface">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <Link href="/" className="font-heading text-xl tracking-widest uppercase text-sand">
             Bridge 'n' Bass

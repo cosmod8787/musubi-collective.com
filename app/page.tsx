@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 
-const ARIAL = '"Arial Narrow", "Helvetica Neue", sans-serif';
 const BAYARD = '"Bayard", Georgia, serif';
 const MONO = '"Courier New", Courier, monospace';
+const ARIAL = '"Arial Narrow", "Helvetica Neue", sans-serif';
 const READABLE = '"Helvetica Neue", Helvetica, Arial, sans-serif';
 
 const NEON = ["#FF2D78", "#00FFB2", "#FFE600", "#00CFFF", "#FF6B00", "#BF5FFF"];
@@ -46,39 +46,28 @@ const events = [
 
 export default function Home() {
   const [selected, setSelected] = useState<number | null>(null);
-  const [expanded, setExpanded] = useState<number | null>(null);
   const [info, setInfo] = useState(false);
   const [bePart, setBePart] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-const event = selected !== null ? events[selected] : null;
+  const event = selected !== null ? events[selected] : null;
+  const ev = events[0];
 
   return (
-    <div style={{ background: "#000", minHeight: "100vh", fontFamily: ARIAL }}>
+    <div className="bg-black min-h-screen" style={{ fontFamily: ARIAL }}>
 
       {/* ── Header ── */}
-      <header style={{
-        background: "#000",
-      }}>
-        {/* ── Header Zeile ── */}
-        <div style={{ padding: "1.5vh 2vw", display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-          <div style={{ display: "flex", gap: "3vw", alignItems: "flex-start" }}>
-            <button
-              onClick={() => setInfo(true)}
-              style={{ fontFamily: ARIAL, fontSize: "8vw", fontWeight: 900, letterSpacing: "-0.04em", textTransform: "uppercase", color: "#fff", background: "none", border: "none", cursor: "pointer", padding: 0, lineHeight: 1 }}
-            >
-              INFO
-            </button>
-          </div>
-          <div style={{
-            fontFamily: ARIAL,
-            fontSize: "8vw",
-            fontWeight: 900,
-            letterSpacing: "-0.04em",
-            textTransform: "uppercase",
-            color: "#fff",
-            whiteSpace: "nowrap",
-            lineHeight: 1,
-          }}>
+      <header className="bg-black">
+        <div className="flex justify-between items-start px-4 sm:px-[4vw] py-3 sm:py-[1.5vh]">
+          <button
+            onClick={() => setInfo(true)}
+            className="text-[14vw] sm:text-[8vw] font-black uppercase text-white bg-transparent border-none cursor-pointer p-0 leading-none tracking-[-0.04em]"
+            style={{ fontFamily: ARIAL }}
+          >
+            INFO
+          </button>
+          <div
+            className="text-[14vw] sm:text-[8vw] font-black uppercase text-white whitespace-nowrap leading-none tracking-[-0.04em]"
+            style={{ fontFamily: ARIAL }}
+          >
             MUSUBI
           </div>
         </div>
@@ -88,75 +77,84 @@ const event = selected !== null ? events[selected] : null;
       <main>
 
         {/* ── NEXT EVENT Hero ── */}
-        {(() => {
-          const ev = events[0];
-          return (
-            <div style={{ borderBottom: "1px solid #222", padding: "4vw 4vw 5vw" }}>
-              {/* Label */}
-              <div style={{ marginBottom: "2.5vw" }}>
-                <span style={{ fontFamily: MONO, fontSize: "1vw", letterSpacing: "0.3em", textTransform: "uppercase", color: ev.color, opacity: 0.85 }}>
-                  — NEXT EVENT
+        <div className="border-b border-[#222] px-4 sm:px-[4vw] pb-8 sm:pb-[5vw] pt-4 sm:pt-[4vw]">
+          {/* Label */}
+          <div className="mb-4 sm:mb-[2.5vw]">
+            <span
+              className="text-[10px] sm:text-[clamp(10px,1vw,14px)] tracking-[0.3em] uppercase opacity-85"
+              style={{ fontFamily: MONO, color: ev.color }}
+            >
+              — NEXT EVENT
+            </span>
+          </div>
+
+          {/* Stack on mobile, side-by-side on md+ */}
+          <div className="flex flex-col md:flex-row md:justify-center md:items-stretch gap-4 md:gap-[3vw]">
+            {/* Image */}
+            <div className="w-full md:w-[38vw] flex-shrink-0">
+              <img
+                src={ev.poster}
+                alt={ev.title}
+                className="w-full h-full object-cover block grayscale aspect-[4/3] md:aspect-auto"
+              />
+            </div>
+
+            {/* Neon Panel */}
+            <div
+              className="w-full md:w-[28vw] flex flex-col justify-between p-6 sm:p-8 md:p-[2.5vw]"
+              style={{ background: ev.color }}
+            >
+              <div>
+                <span
+                  className="block mb-6 md:mb-[1.2em] whitespace-pre-line text-[11vw] sm:text-[7vw] md:text-[5.5vw] leading-[0.88] tracking-[-0.03em] text-black font-normal"
+                  style={{ fontFamily: BAYARD }}
+                >
+                  {ev.title}
+                </span>
+                <span
+                  className="block text-[11px] sm:text-[clamp(11px,1.4vw,18px)] tracking-[0.2em] uppercase text-black opacity-65"
+                  style={{ fontFamily: MONO }}
+                >
+                  COMING SOON
                 </span>
               </div>
-
-              {/* Center: Image + Neon-Panel nebeneinander, zentriert */}
-              <div style={{ display: "flex", justifyContent: "center", gap: "3vw", alignItems: "stretch" }}>
-                {/* Bild */}
-                <div style={{ width: "38vw", flexShrink: 0 }}>
-                  <img
-                    src={ev.poster!}
-                    alt={ev.title}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "grayscale(100%)" }}
-                  />
-                </div>
-
-                {/* Neon-Panel */}
-                <div style={{
-                  width: "28vw",
-                  background: ev.color,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  padding: "2.5vw",
-                }}>
-                  {/* Titel + Datum/Venue unten */}
-                  <div>
-                    <span style={{
-                      fontFamily: BAYARD, fontSize: "5.5vw", fontWeight: 400,
-                      lineHeight: 0.88, letterSpacing: "-0.03em",
-                      color: "#000", whiteSpace: "pre-line", display: "block",
-                      marginBottom: "1.2em",
-                    }}>
-                      {ev.title}
-                    </span>
-                    <span style={{ fontFamily: MONO, fontSize: "1.4vw", letterSpacing: "0.2em", textTransform: "uppercase", color: "#000", opacity: 0.65, display: "block" }}>
-                      COMING SOON
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
-          );
-        })()}
+          </div>
+        </div>
 
         {/* ── Upcoming Events ── */}
-        <div style={{ borderBottom: "1px solid #222" }}>
-          {/* Label */}
-          <div style={{ padding: "3vw 4vw 0" }}>
-            <span style={{ fontFamily: MONO, fontSize: "1vw", letterSpacing: "0.3em", textTransform: "uppercase", color: "#fff", opacity: 0.3 }}>
+        <div className="border-b border-[#222]">
+          <div className="px-4 sm:px-[4vw] pt-6 sm:pt-[3vw] pb-0">
+            <span
+              className="text-[10px] sm:text-[clamp(10px,1vw,13px)] tracking-[0.3em] uppercase text-white opacity-30"
+              style={{ fontFamily: MONO }}
+            >
               — UPCOMING
             </span>
           </div>
+
           {events.slice(1).map((ev, i) => (
-            <div key={i} style={{ borderTop: "1px solid #1a1a1a", padding: "2.2vw 4vw", display: "flex", alignItems: "center", gap: "3vw" }}>
-              {/* Neon-Punkt */}
-              <div style={{ width: "0.6vw", height: "0.6vw", borderRadius: "50%", background: ev.color, flexShrink: 0 }} />
-              {/* COMING SOON */}
-              <span style={{ fontFamily: MONO, fontSize: "1.2vw", letterSpacing: "0.2em", textTransform: "uppercase", color: "#fff", opacity: 0.4, flexShrink: 0, width: "16vw" }}>
+            <div
+              key={i}
+              className="border-t border-[#1a1a1a] px-4 sm:px-[4vw] py-4 md:py-[2.2vw] flex items-center gap-3 md:gap-[3vw]"
+            >
+              {/* Dot */}
+              <div
+                className="w-2 h-2 md:w-[0.6vw] md:h-[0.6vw] rounded-full flex-shrink-0"
+                style={{ background: ev.color }}
+              />
+              {/* Coming Soon label */}
+              <span
+                className="text-[10px] sm:text-[clamp(10px,1.2vw,15px)] tracking-[0.2em] uppercase text-white opacity-40 flex-shrink-0 w-20 sm:w-[16vw]"
+                style={{ fontFamily: MONO }}
+              >
                 COMING SOON
               </span>
-              {/* Titel */}
-              <span style={{ fontFamily: ARIAL, fontSize: "2.2vw", fontWeight: 900, letterSpacing: "-0.03em", textTransform: "uppercase", color: "#fff", lineHeight: 1, flex: 1 }}>
+              {/* Title */}
+              <span
+                className="text-[4.5vw] sm:text-[3vw] md:text-[2.2vw] font-black tracking-[-0.03em] uppercase text-white leading-tight flex-1 min-w-0"
+                style={{ fontFamily: ARIAL }}
+              >
                 {ev.title.replace(/\n/g, " ")}
               </span>
             </div>
@@ -166,112 +164,83 @@ const event = selected !== null ? events[selected] : null;
       </main>
 
       {/* ── Footer ── */}
-      <footer style={{
-        padding: "4vw",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "flex-end",
-        borderTop: "1px solid #222",
-        marginTop: "2vw",
-      }}>
-        <div>
-          <div style={{ fontFamily: MONO, fontSize: "0.65vw", letterSpacing: "0.2em", textTransform: "uppercase", opacity: 0.35, lineHeight: 1.8 }}>
-            MUSUBI<br />BERLIN, GERMANY
-          </div>
+      <footer className="px-4 sm:px-[4vw] py-8 md:py-[4vw] flex flex-col sm:flex-row sm:justify-between sm:items-end border-t border-[#222] mt-4 md:mt-[2vw] gap-6 sm:gap-0">
+        <div
+          className="text-[10px] md:text-[clamp(10px,0.65vw,11px)] tracking-[0.2em] uppercase opacity-35 leading-relaxed"
+          style={{ fontFamily: MONO }}
+        >
+          MUSUBI<br />BERLIN, GERMANY
         </div>
         <button
           onClick={() => setBePart(true)}
-          style={{
-            background: "#fff",
-            border: "none",
-            cursor: "pointer",
-            fontFamily: ARIAL,
-            fontSize: "1.4vw",
-            fontWeight: 900,
-            letterSpacing: "0.05em",
-            textTransform: "uppercase",
-            color: "#000",
-            padding: "0.6em 1.6em",
-            lineHeight: 1,
-          }}
+          className="bg-white border-none cursor-pointer font-black tracking-[0.05em] uppercase text-black text-sm md:text-[1.4vw] px-6 py-3 leading-none self-start sm:self-auto"
+          style={{ fontFamily: ARIAL }}
         >
           BE PART OF IT
         </button>
-        <div style={{ fontFamily: MONO, fontSize: "0.65vw", letterSpacing: "0.2em", textTransform: "uppercase", opacity: 0.35 }}>
+        <div
+          className="text-[10px] md:text-[clamp(10px,0.65vw,11px)] tracking-[0.2em] uppercase opacity-35"
+          style={{ fontFamily: MONO }}
+        >
           © 2026
         </div>
       </footer>
 
       {/* ── Event Vollbild ── */}
       {event && (
-        <div style={{ position: "fixed", inset: 0, background: "#000", zIndex: 300, overflow: "hidden", display: "flex", flexDirection: "column", padding: "3vw 4vw" }}>
-
-          {/* ── Top Bar: Pfeil + Datum/Venue ── */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "3vw", flexShrink: 0 }}>
+        <div className="fixed inset-0 bg-black z-[300] overflow-hidden flex flex-col p-4 sm:p-[3vw_4vw]">
+          <div className="flex items-center justify-between mb-8 md:mb-[3vw] flex-shrink-0">
             <button
               onClick={() => setSelected(null)}
-              style={{ background: "none", border: "none", cursor: "pointer", fontFamily: ARIAL, fontSize: "2vw", fontWeight: 900, color: event.color, padding: 0, lineHeight: 1 }}
+              className="text-[8vw] md:text-[2vw] font-black bg-transparent border-none cursor-pointer p-0 leading-none"
+              style={{ color: event.color, fontFamily: ARIAL }}
             >
               ←
             </button>
-            <span style={{ fontFamily: MONO, fontSize: "1.5vw", letterSpacing: "0.2em", textTransform: "uppercase", opacity: 0.4, color: "#fff" }}>
+            <span
+              className="text-[10px] md:text-[1.5vw] tracking-[0.2em] uppercase opacity-40 text-white"
+              style={{ fontFamily: MONO }}
+            >
               {event.date} — {event.venue}
             </span>
           </div>
-
-          {/* ── Titel ── */}
-          <div style={{ display: "flex", flex: 1, minHeight: 0 }}>
-            <div style={{ display: "flex", alignItems: "flex-start" }}>
-              <span style={{ fontFamily: BAYARD, fontSize: "5vw", fontWeight: 400, lineHeight: 0.9, letterSpacing: "-0.03em", whiteSpace: "pre-line", color: event.color }}>
-                {event.title}
-              </span>
-            </div>
+          <div className="flex flex-1 min-h-0 items-start">
+            <span
+              className="text-[9vw] md:text-[5vw] font-normal leading-[0.9] tracking-[-0.03em] whitespace-pre-line"
+              style={{ fontFamily: BAYARD, color: event.color }}
+            >
+              {event.title}
+            </span>
           </div>
         </div>
       )}
 
       {/* ── Be Part Of It Modal ── */}
       {bePart && (
-        <div style={{ position: "fixed", inset: 0, background: "#000", zIndex: 300, display: "flex", flexDirection: "column", padding: "4vw" }}>
+        <div className="fixed inset-0 bg-black z-[300] flex flex-col p-4 sm:p-[4vw]">
           <button
             onClick={() => setBePart(false)}
-            style={{
-              alignSelf: "flex-start",
-              background: "#fff",
-              border: "none",
-              cursor: "pointer",
-              fontFamily: ARIAL,
-              fontSize: "2vw",
-              fontWeight: 900,
-              color: "#000",
-              padding: "0.3em 0.8em",
-              lineHeight: 1,
-              marginBottom: "5vw",
-            }}
+            className="self-start bg-white border-none cursor-pointer font-black text-black text-base md:text-[2vw] px-4 py-2 leading-none mb-10 md:mb-[5vw]"
+            style={{ fontFamily: ARIAL }}
           >
             ←
           </button>
-          <span style={{ fontFamily: ARIAL, fontSize: "8vw", fontWeight: 900, letterSpacing: "-0.04em", textTransform: "uppercase", color: "#fff", lineHeight: 0.9, display: "block", marginBottom: "3vw" }}>
+          <span
+            className="text-[13vw] sm:text-[8vw] font-black uppercase text-white leading-[0.9] block mb-6 tracking-[-0.04em]"
+            style={{ fontFamily: ARIAL }}
+          >
             BE PART<br />OF IT.
           </span>
-          <p style={{ fontFamily: BAYARD, fontSize: "1.6vw", lineHeight: 1.8, color: "#fff", opacity: 0.6, maxWidth: "50vw", margin: "0 0 3vw 0" }}>
+          <p
+            className="text-sm sm:text-base md:text-[1.6vw] leading-relaxed text-white opacity-60 max-w-sm md:max-w-[50vw] mb-8"
+            style={{ fontFamily: BAYARD }}
+          >
             You want to join, play, exhibit or just be part of it? Write us.
           </p>
           <a
             href="mailto:fritzcosmod@gmail.com"
-            style={{
-              alignSelf: "flex-start",
-              fontFamily: ARIAL,
-              fontSize: "1.2vw",
-              fontWeight: 900,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "#000",
-              background: "#fff",
-              textDecoration: "none",
-              padding: "0.6em 1.6em",
-              lineHeight: 1,
-            }}
+            className="self-start font-black tracking-[0.1em] uppercase text-black bg-white no-underline text-xs md:text-[1.2vw] px-6 py-3 leading-none"
+            style={{ fontFamily: ARIAL }}
           >
             fritzcosmod@gmail.com
           </a>
@@ -280,40 +249,62 @@ const event = selected !== null ? events[selected] : null;
 
       {/* ── Info Modal ── */}
       {info && (
-        <div style={{ position: "fixed", inset: 0, background: "#000", zIndex: 300, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-
-          {/* ── Top Bar ── */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "2vw 3vw", flexShrink: 0, borderBottom: "1px solid #1a1a1a" }}>
-            <span style={{ fontFamily: ARIAL, fontSize: "5vw", fontWeight: 900, letterSpacing: "-0.04em", textTransform: "uppercase", color: "#fff", lineHeight: 1 }}>
+        <div className="fixed inset-0 bg-black z-[300] flex flex-col overflow-hidden">
+          {/* Top Bar */}
+          <div className="flex items-center justify-between px-4 sm:px-[3vw] py-4 sm:py-[2vw] flex-shrink-0 border-b border-[#1a1a1a]">
+            <span
+              className="text-[10vw] sm:text-[5vw] font-black uppercase text-white leading-none tracking-[-0.04em]"
+              style={{ fontFamily: ARIAL }}
+            >
               INFO
             </span>
             <button
               onClick={() => setInfo(false)}
-              style={{ fontFamily: ARIAL, fontSize: "5vw", fontWeight: 900, letterSpacing: "-0.04em", textTransform: "uppercase", color: "#fff", background: "none", border: "none", cursor: "pointer", lineHeight: 1, padding: 0 }}
+              className="text-[10vw] sm:text-[5vw] font-black uppercase text-white bg-transparent border-none cursor-pointer leading-none p-0 tracking-[-0.04em]"
+              style={{ fontFamily: ARIAL }}
             >
               ✕
             </button>
           </div>
 
-          {/* ── Content: nur Englisch ── */}
-          <div style={{ flex: 1, overflowY: "auto", padding: "4vw 6vw", maxWidth: "70vw" }}>
-            <p style={{ fontFamily: READABLE, fontSize: "1.65vw", lineHeight: 1.75, color: "#fff", margin: "0 0 1.6em 0" }}>
+          {/* Content */}
+          <div className="flex-1 overflow-y-auto px-4 sm:px-[6vw] py-8 sm:py-[4vw] max-w-full md:max-w-[70vw]">
+            <p
+              className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white mb-5 md:mb-[1.6em]"
+              style={{ fontFamily: READABLE }}
+            >
               Do you know this feeling? The party world feels like it was made for someone else. For people who stand out from the crowd. Who give themselves an air of untouchability. Not looking at anyone — or if they do, very directly, as if you are now worthy of their attention.
             </p>
-            <p style={{ fontFamily: READABLE, fontSize: "1.65vw", lineHeight: 1.75, color: "#fff", margin: "0 0 1.6em 0" }}>
+            <p
+              className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white mb-5 md:mb-[1.6em]"
+              style={{ fontFamily: READABLE }}
+            >
               What is it that makes us act this way?
             </p>
-            <p style={{ fontFamily: READABLE, fontSize: "1.65vw", lineHeight: 1.75, color: "#fff", margin: "0 0 1.6em 0" }}>
-              There is a term for this in sociology: <span style={{ color: "#FF2D78" }}>Social Distinction.</span> It means marking how one differs from others in order to elevate one's own social status above theirs.
+            <p
+              className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white mb-5 md:mb-[1.6em]"
+              style={{ fontFamily: READABLE }}
+            >
+              There is a term for this in sociology:{" "}
+              <span style={{ color: "#FF2D78" }}>Social Distinction.</span> It means marking how one differs from others in order to elevate one&apos;s own social status above theirs.
             </p>
-            <p style={{ fontFamily: READABLE, fontSize: "1.65vw", lineHeight: 1.75, color: "#fff", margin: "0 0 1.6em 0" }}>
+            <p
+              className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white mb-5 md:mb-[1.6em]"
+              style={{ fontFamily: READABLE }}
+            >
               It promotes inequality, envy and self-doubt.
             </p>
-            <div style={{ borderTop: "1px solid #FF2D78", margin: "2.5vw 0", opacity: 0.4 }} />
-            <p style={{ fontFamily: ARIAL, fontSize: "3.2vw", fontWeight: 900, letterSpacing: "-0.03em", textTransform: "uppercase", color: "#fff", lineHeight: 1.1, margin: "0 0 0.5em 0" }}>
+            <div className="border-t border-[#FF2D78] my-8 md:my-[2.5vw] opacity-40" />
+            <p
+              className="text-2xl sm:text-3xl md:text-[3.2vw] font-black uppercase text-white leading-[1.1] tracking-[-0.03em] mb-2"
+              style={{ fontFamily: ARIAL }}
+            >
               We do it differently.
             </p>
-            <p style={{ fontFamily: READABLE, fontSize: "1.65vw", lineHeight: 1.75, color: "#fff", opacity: 0.65, margin: 0 }}>
+            <p
+              className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white opacity-65"
+              style={{ fontFamily: READABLE }}
+            >
               We act as equals. We are confident and at the same time respectful.
             </p>
           </div>
