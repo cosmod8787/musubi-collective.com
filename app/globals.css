@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Bayard';
+  src: url('/BAYARD-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.vinyl-spin {
+  animation: spin 3s linear infinite;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Grain overlay — animated film noise */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)'/%3E%3C/svg%3E");
+  animation: grain 0.5s steps(2) infinite;
+}
+
+@keyframes grain {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-4%, 3%); }
+  50%  { transform: translate(6%, -2%); }
+  75%  { transform: translate(-2%, 5%); }
+  100% { transform: translate(4%, -4%); }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading), sans-serif;
+  }
+
+  /* Red accent stripe (left border, like torn flyer) */
+  .flyer-stripe {
+    border-left: 3px solid #c42b1a;
+    padding-left: 1.25rem;
+  }
+
+  /* Worn paper texture on sections */
+  .bg-surface {
+    background-color: #131210;
+  }
+
+  .bg-surface-2 {
+    background-color: #1c1a16;
+  }
+
+  /* Grayscale + contrast on images for documentary feel */
+  .img-raw {
+    filter: grayscale(100%) contrast(1.15) brightness(0.85);
+    transition: filter 0.4s ease;
+  }
+  .img-raw:hover {
+    filter: grayscale(60%) contrast(1.1) brightness(0.9);
+  }
+
+  /* Underline accent styles */
+  .underline-red {
+    text-decoration: underline;
+    text-decoration-color: #c42b1a;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+  }
+
+  .underline-amber {
+    text-decoration: underline;
+    text-decoration-color: #c8920a;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+  }
+
+  /* Raw horizontal rule */
+  .rule-raw {
+    border: none;
+    border-top: 1px solid #2e2b24;
+  }
+
+  /* Scanlines effect overlay on images */
+  .scanlines {
+    position: relative;
+  }
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+  }
+}
