@@ -200,11 +200,11 @@ export default function Home() {
             You want to join, play, exhibit or just be part of it? Write us.
           </p>
           <a
-            href="mailto:fritzcosmod@gmail.com"
+            href="mailto:musubi@gmail.com"
             className="self-start font-black tracking-[0.1em] uppercase text-black bg-white no-underline text-xs md:text-[1.2vw] px-6 py-3 leading-none"
             style={{ fontFamily: ARIAL }}
           >
-            fritzcosmod@gmail.com
+            musubi@gmail.com
           </a>
         </div>
       )}
