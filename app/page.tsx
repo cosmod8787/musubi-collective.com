@@ -122,44 +122,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ── Upcoming Events ── */}
-        <div className="border-b border-[#222]">
-          <div className="px-4 sm:px-[4vw] pt-6 sm:pt-[3vw] pb-0">
-            <span
-              className="text-[10px] sm:text-[clamp(10px,1vw,13px)] tracking-[0.3em] uppercase text-white opacity-30"
-              style={{ fontFamily: MONO }}
-            >
-              — UPCOMING
-            </span>
-          </div>
-
-          {events.slice(1).map((ev, i) => (
-            <div
-              key={i}
-              className="border-t border-[#1a1a1a] px-4 sm:px-[4vw] py-4 md:py-[2.2vw] flex items-center gap-3 md:gap-[3vw]"
-            >
-              {/* Dot */}
-              <div
-                className="w-2 h-2 md:w-[0.6vw] md:h-[0.6vw] rounded-full flex-shrink-0"
-                style={{ background: ev.color }}
-              />
-              {/* Coming Soon label */}
-              <span
-                className="text-[10px] sm:text-[clamp(10px,1.2vw,15px)] tracking-[0.2em] uppercase text-white opacity-40 flex-shrink-0 w-20 sm:w-[16vw]"
-                style={{ fontFamily: MONO }}
-              >
-                COMING SOON
-              </span>
-              {/* Title */}
-              <span
-                className="text-[4.5vw] sm:text-[3vw] md:text-[2.2vw] font-black tracking-[-0.03em] uppercase text-white leading-tight flex-1 min-w-0"
-                style={{ fontFamily: ARIAL }}
-              >
-                {ev.title.replace(/\n/g, " ")}
-              </span>
-            </div>
-          ))}
-        </div>
 
       </main>
 
@@ -273,26 +235,26 @@ export default function Home() {
               className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white mb-5 md:mb-[1.6em]"
               style={{ fontFamily: READABLE }}
             >
-              Do you know this feeling? The party world feels like it was made for someone else. For people who stand out from the crowd. Who give themselves an air of untouchability. Not looking at anyone — or if they do, very directly, as if you are now worthy of their attention.
+              Do you know this feeling? The party scene often feels like it was made for someone else — for people who stand out from the crowd, who carry themselves with an air of untouchability. They avoid looking at anyone, or if they do, they stare directly, as if you have only now become worthy of their attention.
             </p>
             <p
               className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white mb-5 md:mb-[1.6em]"
               style={{ fontFamily: READABLE }}
             >
-              What is it that makes us act this way?
+              What makes us act this way?
             </p>
             <p
               className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white mb-5 md:mb-[1.6em]"
               style={{ fontFamily: READABLE }}
             >
-              There is a term for this in sociology:{" "}
-              <span style={{ color: "#FF2D78" }}>Social Distinction.</span> It means marking how one differs from others in order to elevate one&apos;s own social status above theirs.
+              In sociology, there is a term for this:{" "}
+              <span style={{ color: "#FF2D78" }}>social distinction.</span> It describes the way people set themselves apart from others in order to elevate their own social status.
             </p>
             <p
               className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white mb-5 md:mb-[1.6em]"
               style={{ fontFamily: READABLE }}
             >
-              It promotes inequality, envy and self-doubt.
+              This creates inequality, envy, and self-doubt.
             </p>
             <div className="border-t border-[#FF2D78] my-8 md:my-[2.5vw] opacity-40" />
             <p
@@ -305,7 +267,7 @@ export default function Home() {
               className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white opacity-65"
               style={{ fontFamily: READABLE }}
             >
-              We act as equals. We are confident and at the same time respectful.
+              We meet each other as equals — confident, yet always respectful.
             </p>
           </div>
         </div>

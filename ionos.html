@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MUSUBI</title>
+  <style>
+    @font-face {
+      font-family: 'Bayard';
+      src: url('BAYARD-Regular.ttf') format('truetype'),
+           url('BAYARD-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #000;
+      min-height: 100vh;
+      font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+      color: #fff;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 1.5vh 2vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .header-info {
+      font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+      font-size: 8vw;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .header-logo {
+      font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+      font-size: 8vw;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    /* ── Next Event Hero ── */
+    .hero {
+      border-bottom: 1px solid #222;
+      padding: 4vw 4vw 5vw;
+    }
+
+    .hero-label {
+      margin-bottom: 2.5vw;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1vw;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #FF2D78;
+      opacity: 0.85;
+    }
+
+    .hero-inner {
+      display: flex;
+      justify-content: center;
+      gap: 3vw;
+      align-items: stretch;
+    }
+
+    .hero-img {
+      width: 38vw;
+      flex-shrink: 0;
+    }
+
+    .hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+    }
+
+    .hero-panel {
+      width: 28vw;
+      background: #FF2D78;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.5vw;
+    }
+
+    .hero-title {
+      font-family: "Bayard", Georgia, serif;
+      font-size: 5.5vw;
+      font-weight: 400;
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      color: #000;
+      white-space: pre-line;
+      display: block;
+      margin-bottom: 1.2em;
+    }
+
+    .hero-soon {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1.4vw;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #000;
+      opacity: 0.65;
+      display: block;
+    }
+
+    /* ── Upcoming ── */
+    .upcoming {
+      border-bottom: 1px solid #222;
+    }
+
+    .upcoming-label {
+      padding: 3vw 4vw 0;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1vw;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0.3;
+    }
+
+    .upcoming-row {
+      border-top: 1px solid #1a1a1a;
+      padding: 2.2vw 4vw;
+      display: flex;
+      align-items: center;
+      gap: 3vw;
+    }
+
+    .upcoming-dot {
+      width: 0.6vw;
+      height: 0.6vw;
+      border-radius: 50%;
+      background: #FF2D78;
+      flex-shrink: 0;
+    }
+
+    .upcoming-soon {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1.2vw;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0.4;
+      flex-shrink: 0;
+      width: 16vw;
+    }
+
+    .upcoming-title {
+      font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+      font-size: 2.2vw;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1;
+      flex: 1;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 4vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid #222;
+      margin-top: 2vw;
+    }
+
+    .footer-address {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.65vw;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.35;
+      line-height: 1.8;
+    }
+
+    .btn-bepart {
+      background: #fff;
+      border: none;
+      cursor: pointer;
+      font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+      font-size: 1.4vw;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #000;
+      padding: 0.6em 1.6em;
+      line-height: 1;
+    }
+
+    .footer-copy {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.65vw;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.35;
+    }
+
+    /* ── Modals ── */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 300;
+      flex-direction: column;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    /* Info Modal */
+    .modal-info {
+      overflow: hidden;
+    }
+
+    .modal-info .modal-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2vw 3vw;
+      flex-shrink: 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .modal-info .modal-topbar-title {
+      font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+      font-size: 5vw;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .modal-info .modal-close {
+      font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+      font-size: 5vw;
+      font-weight: 900;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .modal-info .modal-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 4vw 6vw;
+      max-width: 70vw;
+    }
+
+    .modal-info .modal-content p {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.65vw;
+      line-height: 1.75;
+      color: #fff;
+      margin: 0 0 1.6em 0;
+    }
+
+    .modal-info .modal-content .accent {
+      color: #FF2D78;
+    }
+
+    .modal-info .modal-content .divider {
+      border-top: 1px solid #FF2D78;
+      margin: 2.5vw 0;
+      opacity: 0.4;
+    }
+
+    .modal-info .modal-content .cta-title {
+      font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+      font-size: 3.2vw;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.1;
+      margin: 0 0 0.5em 0;
+    }
+
+    .modal-info .modal-content .cta-sub {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.65vw;
+      line-height: 1.75;
+      color: #fff;
+      opacity: 0.65;
+      margin: 0;
+    }
+
+    /* Be Part Modal */
+    .modal-bepart {
+      padding: 4vw;
+    }
+
+    .modal-bepart .btn-back {
+      align-self: flex-start;
+      background: #fff;
+      border: none;
+      cursor: pointer;
+      font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+      font-size: 2vw;
+      font-weight: 900;
+      color: #000;
+      padding: 0.3em 0.8em;
+      line-height: 1;
+      margin-bottom: 5vw;
+    }
+
+    .modal-bepart .bepart-title {
+      font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+      font-size: 8vw;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 0.9;
+      display: block;
+      margin-bottom: 3vw;
+    }
+
+    .modal-bepart p {
+      font-family: "Bayard", Georgia, serif;
+      font-size: 1.6vw;
+      line-height: 1.8;
+      color: #fff;
+      opacity: 0.6;
+      max-width: 50vw;
+      margin: 0 0 3vw 0;
+    }
+
+    .modal-bepart .btn-mail {
+      align-self: flex-start;
+      font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+      font-size: 1.2vw;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #000;
+      background: #fff;
+      text-decoration: none;
+      padding: 0.6em 1.6em;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header>
+    <button class="header-info" onclick="openModal('modal-info')">INFO</button>
+    <div class="header-logo">MUSUBI</div>
+  </header>
+
+  <!-- ── Main ── -->
+  <main>
+
+    <!-- ── Next Event Hero ── -->
+    <div class="hero">
+      <div class="hero-label">— NEXT EVENT</div>
+      <div class="hero-inner">
+        <div class="hero-img">
+          <img src="archive-3.jpg" alt="FOOD SLEEP SEX SHELTER BEAUTY" />
+        </div>
+        <div class="hero-panel">
+          <div>
+            <span class="hero-title">FOOD
+SLEEP
+SEX
+SHELTER
+BEAUTY</span>
+            <span class="hero-soon">COMING SOON</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Upcoming Events ── -->
+    <div class="upcoming">
+      <div class="upcoming-label">— UPCOMING</div>
+
+      <div class="upcoming-row">
+        <div class="upcoming-dot"></div>
+        <span class="upcoming-soon">COMING SOON</span>
+        <span class="upcoming-title">I NEVER WANTED TO BE YOUR WEEKEND LOVER</span>
+      </div>
+
+      <div class="upcoming-row">
+        <div class="upcoming-dot"></div>
+        <span class="upcoming-soon">COMING SOON</span>
+        <span class="upcoming-title">YOU NEVER CHANGE THINGS BY FIGHTING THE EXISTING REALITY.</span>
+      </div>
+
+      <div class="upcoming-row">
+        <div class="upcoming-dot"></div>
+        <span class="upcoming-soon">COMING SOON</span>
+        <span class="upcoming-title">BUILD A NEW MODEL THAT MAKES THE EXISTING MODEL OBSOLETE.</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-address">MUSUBI<br />BERLIN, GERMANY</div>
+    <button class="btn-bepart" onclick="openModal('modal-bepart')">BE PART OF IT</button>
+    <div class="footer-copy">© 2026</div>
+  </footer>
+
+  <!-- ── Info Modal ── -->
+  <div id="modal-info" class="modal modal-info">
+    <div class="modal-topbar">
+      <span class="modal-topbar-title">INFO</span>
+      <button class="modal-close" onclick="closeModal('modal-info')">✕</button>
+    </div>
+    <div class="modal-content">
+      <p>Do you know this feeling? The party world feels like it was made for someone else. For people who stand out from the crowd. Who give themselves an air of untouchability. Not looking at anyone — or if they do, very directly, as if you are now worthy of their attention.</p>
+      <p>What is it that makes us act this way?</p>
+      <p>There is a term for this in sociology: <span class="accent">Social Distinction.</span> It means marking how one differs from others in order to elevate one's own social status above theirs.</p>
+      <p>It promotes inequality, envy and self-doubt.</p>
+      <div class="divider"></div>
+      <p class="cta-title">We do it differently.</p>
+      <p class="cta-sub">We act as equals. We are confident and at the same time respectful.</p>
+    </div>
+  </div>
+
+  <!-- ── Be Part Of It Modal ── -->
+  <div id="modal-bepart" class="modal modal-bepart">
+    <button class="btn-back" onclick="closeModal('modal-bepart')">←</button>
+    <span class="bepart-title">BE PART<br />OF IT.</span>
+    <p>You want to join, play, exhibit or just be part of it? Write us.</p>
+    <a class="btn-mail" href="mailto:fritzcosmod@gmail.com">fritzcosmod@gmail.com</a>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+  </script>
+
+</body>
+</html>
