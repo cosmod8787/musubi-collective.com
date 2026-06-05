@@ -2,178 +2,193 @@
 
 import { useState } from "react";
 
-const BAYARD = '"Bayard", Georgia, serif';
-const MONO = '"Courier New", Courier, monospace';
 const ARIAL = '"Arial Narrow", "Helvetica Neue", sans-serif';
+const MONO = '"Courier New", Courier, monospace';
 const READABLE = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+const PINK = "#FF2D78";
 
-const NEON = ["#FF2D78", "#00FFB2", "#FFE600", "#00CFFF", "#FF6B00", "#BF5FFF"];
-
-const events = [
-  {
-    title: "FOOD\nSLEEP\nSEX\nSHELTER\nBEAUTY",
-    poster: "/archive-3.jpg",
-    color: NEON[0],
-    date: "",
-    venue: "",
-    lineup: [],
-  },
-  {
-    title: "I NEVER WANTED TO\nBE YOUR WEEKEND LOVER",
-    poster: "/archive-1.jpg",
-    color: NEON[0],
-    date: "",
-    venue: "",
-    lineup: [],
-  },
-  {
-    title: "YOU NEVER CHANGE THINGS\nBY FIGHTING THE EXISTING\nREALITY.",
-    poster: "/photo-2996.jpg",
-    color: NEON[0],
-    date: "",
-    venue: "",
-    lineup: [],
-  },
-  {
-    title: "BUILD A NEW MODEL THAT MAKES\nTHE EXISTING MODEL OBSOLETE.",
-    poster: "/photo-3041.jpg",
-    color: NEON[0],
-    date: "",
-    venue: "",
-    lineup: [],
-  },
+const GERDA_PHOTOS = [
+  "/gerda/IMG_5867.JPG",
+  "/gerda/DSC_6694.JPG",
+  "/gerda/IMG_5869.JPG",
+  "/gerda/DSC_6734.JPG",
+  "/gerda/IMG_5868.JPG",
+  "/gerda/DSC_6738.JPG",
+  "/gerda/IMG_5767.JPG",
+  "/gerda/DSC_6756.JPG",
+  "/gerda/IMG_5870.JPG",
+  "/gerda/DSC_6759.JPG",
+  "/gerda/IMG_5874.JPG",
+  "/gerda/DSC_6782.JPG",
+  "/gerda/IMG_5875.JPG",
+  "/gerda/DSC_6788.JPG",
+  "/gerda/IMG_5780.JPG",
+  "/gerda/DSC_6790.JPG",
+  "/gerda/DSC_6798.JPG",
+  "/gerda/DSC_6806.JPG",
+  "/gerda/DSC_6822.JPG",
+  "/gerda/DSC_6830.JPG",
+  "/gerda/DSC_6842.JPG",
 ];
 
 export default function Home() {
-  const [selected, setSelected] = useState<number | null>(null);
-  const [info, setInfo] = useState(false);
   const [bePart, setBePart] = useState(false);
-  const event = selected !== null ? events[selected] : null;
-  const ev = events[0];
+  const [lightbox, setLightbox] = useState<string | null>(null);
 
   return (
-    <div className="bg-black min-h-screen" style={{ fontFamily: ARIAL }}>
+    <div className="bg-black min-h-screen" style={{ fontFamily: ARIAL, color: PINK }}>
 
       {/* ── Header ── */}
-      <header className="bg-black">
-        <div className="flex justify-between items-start px-4 sm:px-[4vw] py-3 sm:py-[1.5vh]">
-          <button
-            onClick={() => setInfo(true)}
-            className="text-[14vw] sm:text-[8vw] font-black uppercase text-white bg-transparent border-none cursor-pointer p-0 leading-none tracking-[-0.04em]"
-            style={{ fontFamily: ARIAL }}
-          >
-            INFO
-          </button>
-          <div
-            className="text-[14vw] sm:text-[8vw] font-black uppercase text-white whitespace-nowrap leading-none tracking-[-0.04em]"
-            style={{ fontFamily: ARIAL }}
-          >
-            MUSUBI
-          </div>
-        </div>
+      <header className="flex justify-center items-center px-4 sm:px-[4vw] py-[8vw]">
+        <span
+          className="text-[18vw] sm:text-[12vw] font-black uppercase leading-none tracking-[-0.04em]"
+          style={{ fontFamily: ARIAL, color: PINK }}
+        >
+          Musubi
+        </span>
       </header>
 
-      {/* ── Main ── */}
-      <main>
+      {/* ── Hero / Manifesto ── */}
+      <section className="px-4 sm:px-[4vw] pt-[2vw] pb-[12vw] border-b border-[#1a1a1a] flex justify-center">
+        <p
+          className="text-[clamp(13px,1.5vw,22px)] leading-[1.9] max-w-[680px] text-center"
+          style={{ fontFamily: READABLE, color: PINK }}
+        >
+          Willkommen bei Musubi.
+          <br /><br />
+          Kennst du dieses Gefühl? Die Partyszene fühlt sich oft an, als wäre sie für jemand anderen gemacht — für Menschen, die aus der Masse herausstechen, die eine Aura der Unnahbarkeit mit sich tragen. Sie vermeiden es, jemanden anzuschauen, oder wenn doch, starren sie direkt, als wärst du erst jetzt ihrer Aufmerksamkeit würdig.
+          <br /><br />
+          Was bringt uns dazu, so zu handeln?
+          <br /><br />
+          In der Soziologie gibt es einen Begriff dafür: <span style={{ fontWeight: "bold" }}>soziale Distinktion.</span> Sie beschreibt, wie Menschen sich von anderen abheben, um ihren eigenen sozialen Status zu erhöhen. Das erzeugt Ungleichheit, Neid und Selbstzweifel.
+          <br /><br />
+          Wir machen es anders. Wir begegnen uns auf Augenhöhe — selbstbewusst, aber immer respektvoll.
+          <br /><br />
+          Unsere Floors sind bewusst ohne erhöhte Bereiche gestaltet – keine Backstage-Areas, keine VIP-Tische, kein „besserer Platz" für irgendwen.
+          <br /><br />
+          Bei uns stehen alle auf derselben Ebene. So entsteht ein Raum, den jede*r gleich nutzen, erleben und betreten kann. Wir feiern gemeinsam statt getrennt – offen, respektvoll und auf Augenhöhe.
+        </p>
+      </section>
 
-        {/* ── NEXT EVENT Hero ── */}
-        <div className="border-b border-[#222] px-4 sm:px-[4vw] pb-8 sm:pb-[5vw] pt-4 sm:pt-[4vw]">
-          {/* Label */}
-          <div className="mb-4 sm:mb-[2.5vw]">
-            <span
-              className="text-[10px] sm:text-[clamp(10px,1vw,14px)] tracking-[0.3em] uppercase opacity-85"
-              style={{ fontFamily: MONO, color: ev.color }}
-            >
-              — NEXT EVENT
-            </span>
-          </div>
+      {/* ── Phase 1 — GERDA ── */}
+      <section className="px-4 sm:px-[4vw] pt-[6vw] pb-[10vw]">
 
-          {/* Stack on mobile, side-by-side on md+ */}
-          <div className="flex flex-col md:flex-row md:justify-center md:items-stretch gap-4 md:gap-[3vw]">
-            {/* Image */}
-            <div className="w-full md:w-[38vw] flex-shrink-0">
-              <img
-                src={ev.poster}
-                alt={ev.title}
-                className="w-full h-full object-cover block grayscale aspect-[4/3] md:aspect-auto"
-              />
-            </div>
-
-            {/* Neon Panel */}
-            <div
-              className="w-full md:w-[28vw] flex flex-col justify-between p-6 sm:p-8 md:p-[2.5vw]"
-              style={{ background: ev.color }}
-            >
-              <div>
-                <span
-                  className="block mb-6 md:mb-[1.2em] whitespace-pre-line text-[11vw] sm:text-[7vw] md:text-[5.5vw] leading-[0.88] tracking-[-0.03em] text-black font-normal"
-                  style={{ fontFamily: BAYARD }}
-                >
-                  {ev.title}
-                </span>
-                <span
-                  className="block text-[11px] sm:text-[clamp(11px,1.4vw,18px)] tracking-[0.2em] uppercase text-black opacity-65"
-                  style={{ fontFamily: MONO }}
-                >
-                  COMING SOON
-                </span>
-              </div>
-            </div>
-          </div>
+        {/* Label */}
+        <div className="mb-[4vw]">
+          <span
+            className="text-[clamp(28px,12vw,160px)] font-black uppercase leading-none tracking-[-0.04em] block"
+            style={{ fontFamily: ARIAL, color: PINK }}
+          >
+            PHASE 1
+          </span>
+          <span
+            className="text-[clamp(14px,3.5vw,52px)] font-black uppercase leading-none tracking-[-0.03em] block mt-2"
+            style={{ fontFamily: ARIAL, color: PINK }}
+          >
+            I never wanted to be your weekend lover
+          </span>
         </div>
 
+        {/* Video */}
+        <div className="mb-[4vw] flex justify-center">
+          <video
+            src="/phase1-recap.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full max-w-[480px]"
+            style={{ mixBlendMode: "screen" }}
+          />
+        </div>
 
-      </main>
+        {/* Location label */}
+        <div className="mb-[3vw]">
+          <span
+            className="text-[clamp(12px,1.5vw,20px)] uppercase tracking-[0.15em] opacity-60"
+            style={{ fontFamily: MONO, color: PINK }}
+          >
+            Prachtwerk Berlin
+          </span>
+        </div>
+
+        {/* Masonry photo grid */}
+        <div className="columns-2 sm:columns-3 lg:columns-4 gap-2 sm:gap-3">
+          {GERDA_PHOTOS.map((src, i) => (
+            <div
+              key={src}
+              className="break-inside-avoid mb-2 sm:mb-3 overflow-hidden cursor-pointer group"
+              onClick={() => setLightbox(src)}
+            >
+              <img
+                src={src}
+                alt={`Gerda ${i + 1}`}
+                className="w-full block transition-all duration-500 group-hover:scale-[1.02]"
+              />
+            </div>
+          ))}
+        </div>
+
+      </section>
+
+      {/* ── Phase 2 ── */}
+      <section className="px-4 sm:px-[4vw] pt-[6vw] pb-[10vw] border-t border-[#1a1a1a]">
+        <span
+          className="text-[clamp(28px,12vw,160px)] font-black uppercase leading-none tracking-[-0.04em] block"
+          style={{ fontFamily: ARIAL, color: PINK }}
+        >
+          PHASE 2
+        </span>
+        <span
+          className="text-[clamp(12px,1.5vw,20px)] uppercase tracking-[0.15em] opacity-60 block mt-3"
+          style={{ fontFamily: MONO, color: PINK }}
+        >
+          Upcoming soon
+        </span>
+      </section>
 
       {/* ── Footer ── */}
-      <footer className="px-4 sm:px-[4vw] py-8 md:py-[4vw] flex flex-col sm:flex-row sm:justify-between sm:items-end border-t border-[#222] mt-4 md:mt-[2vw] gap-6 sm:gap-0">
+      <footer className="px-4 sm:px-[4vw] py-8 flex flex-col sm:flex-row sm:justify-between sm:items-end border-t border-[#1a1a1a] gap-6 sm:gap-0">
         <div
-          className="text-[10px] md:text-[clamp(10px,0.65vw,11px)] tracking-[0.2em] uppercase opacity-35 leading-relaxed"
-          style={{ fontFamily: MONO }}
+          className="text-[10px] tracking-[0.2em] uppercase opacity-60 leading-relaxed"
+          style={{ fontFamily: MONO, color: PINK }}
         >
-          MUSUBI<br />BERLIN, GERMANY
+          NO DISTINCTION<br />BERLIN, GERMANY
         </div>
         <button
           onClick={() => setBePart(true)}
-          className="bg-white border-none cursor-pointer font-black tracking-[0.05em] uppercase text-black text-sm md:text-[1.4vw] px-6 py-3 leading-none self-start sm:self-auto"
-          style={{ fontFamily: ARIAL }}
+          className="border-none cursor-pointer font-black tracking-[0.05em] uppercase text-sm px-6 py-3 leading-none self-start sm:self-auto transition-opacity hover:opacity-70"
+          style={{ fontFamily: ARIAL, color: PINK, background: "transparent", outline: `1px solid ${PINK}` }}
         >
           BE PART OF IT
         </button>
         <div
-          className="text-[10px] md:text-[clamp(10px,0.65vw,11px)] tracking-[0.2em] uppercase opacity-35"
-          style={{ fontFamily: MONO }}
+          className="text-[10px] tracking-[0.2em] uppercase opacity-60"
+          style={{ fontFamily: MONO, color: PINK }}
         >
           © 2026
         </div>
       </footer>
 
-      {/* ── Event Vollbild ── */}
-      {event && (
-        <div className="fixed inset-0 bg-black z-[300] overflow-hidden flex flex-col p-4 sm:p-[3vw_4vw]">
-          <div className="flex items-center justify-between mb-8 md:mb-[3vw] flex-shrink-0">
-            <button
-              onClick={() => setSelected(null)}
-              className="text-[8vw] md:text-[2vw] font-black bg-transparent border-none cursor-pointer p-0 leading-none"
-              style={{ color: event.color, fontFamily: ARIAL }}
-            >
-              ←
-            </button>
-            <span
-              className="text-[10px] md:text-[1.5vw] tracking-[0.2em] uppercase opacity-40 text-white"
-              style={{ fontFamily: MONO }}
-            >
-              {event.date} — {event.venue}
-            </span>
-          </div>
-          <div className="flex flex-1 min-h-0 items-start">
-            <span
-              className="text-[9vw] md:text-[5vw] font-normal leading-[0.9] tracking-[-0.03em] whitespace-pre-line"
-              style={{ fontFamily: BAYARD, color: event.color }}
-            >
-              {event.title}
-            </span>
-          </div>
+      {/* ── Lightbox ── */}
+      {lightbox && (
+        <div
+          className="fixed inset-0 bg-black z-[400] flex items-center justify-center cursor-pointer"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            className="absolute top-4 right-6 text-3xl font-black bg-transparent border-none cursor-pointer"
+            style={{ color: PINK }}
+            onClick={() => setLightbox(null)}
+          >
+            ✕
+          </button>
+          <img
+            src={lightbox}
+            alt=""
+            className="max-w-[90vw] max-h-[90vh] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
       )}
 
@@ -182,96 +197,34 @@ export default function Home() {
         <div className="fixed inset-0 bg-black z-[300] flex flex-col p-4 sm:p-[4vw]">
           <button
             onClick={() => setBePart(false)}
-            className="self-start bg-white border-none cursor-pointer font-black text-black text-base md:text-[2vw] px-4 py-2 leading-none mb-10 md:mb-[5vw]"
-            style={{ fontFamily: ARIAL }}
+            className="self-start border-none cursor-pointer font-black text-base px-4 py-2 leading-none mb-10 bg-transparent"
+            style={{ fontFamily: ARIAL, color: PINK }}
           >
             ←
           </button>
           <span
-            className="text-[13vw] sm:text-[8vw] font-black uppercase text-white leading-[0.9] block mb-6 tracking-[-0.04em]"
-            style={{ fontFamily: ARIAL }}
+            className="text-[13vw] sm:text-[8vw] font-black uppercase leading-[0.9] block mb-6 tracking-[-0.04em]"
+            style={{ fontFamily: ARIAL, color: PINK }}
           >
             BE PART<br />OF IT.
           </span>
           <p
-            className="text-sm sm:text-base md:text-[1.6vw] leading-relaxed text-white opacity-60 max-w-sm md:max-w-[50vw] mb-8"
-            style={{ fontFamily: BAYARD }}
+            className="text-sm sm:text-base leading-relaxed opacity-70 max-w-sm mb-8"
+            style={{ fontFamily: READABLE, color: PINK }}
           >
-            You want to join, play, exhibit or just be part of it? Write us.
+            Du willst mitmachen, spielen, ausstellen oder einfach dabei sein? Schreib uns.
           </p>
           <a
             href="mailto:musubi@gmail.com"
-            className="self-start font-black tracking-[0.1em] uppercase text-black bg-white no-underline text-xs md:text-[1.2vw] px-6 py-3 leading-none"
-            style={{ fontFamily: ARIAL }}
+            className="self-start font-black tracking-[0.1em] uppercase no-underline text-xs px-6 py-3 leading-none hover:opacity-70 transition-opacity"
+            style={{ fontFamily: ARIAL, color: PINK, outline: `1px solid ${PINK}` }}
           >
             musubi@gmail.com
           </a>
         </div>
       )}
 
-      {/* ── Info Modal ── */}
-      {info && (
-        <div className="fixed inset-0 bg-black z-[300] flex flex-col overflow-hidden">
-          {/* Top Bar */}
-          <div className="flex items-center justify-between px-4 sm:px-[3vw] py-4 sm:py-[2vw] flex-shrink-0 border-b border-[#1a1a1a]">
-            <span
-              className="text-[10vw] sm:text-[5vw] font-black uppercase text-white leading-none tracking-[-0.04em]"
-              style={{ fontFamily: ARIAL }}
-            >
-              INFO
-            </span>
-            <button
-              onClick={() => setInfo(false)}
-              className="text-[10vw] sm:text-[5vw] font-black uppercase text-white bg-transparent border-none cursor-pointer leading-none p-0 tracking-[-0.04em]"
-              style={{ fontFamily: ARIAL }}
-            >
-              ✕
-            </button>
-          </div>
 
-          {/* Content */}
-          <div className="flex-1 overflow-y-auto px-4 sm:px-[6vw] py-8 sm:py-[4vw] max-w-full md:max-w-[70vw]">
-            <p
-              className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white mb-5 md:mb-[1.6em]"
-              style={{ fontFamily: READABLE }}
-            >
-              Do you know this feeling? The party scene often feels like it was made for someone else — for people who stand out from the crowd, who carry themselves with an air of untouchability. They avoid looking at anyone, or if they do, they stare directly, as if you have only now become worthy of their attention.
-            </p>
-            <p
-              className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white mb-5 md:mb-[1.6em]"
-              style={{ fontFamily: READABLE }}
-            >
-              What makes us act this way?
-            </p>
-            <p
-              className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white mb-5 md:mb-[1.6em]"
-              style={{ fontFamily: READABLE }}
-            >
-              In sociology, there is a term for this:{" "}
-              <span style={{ color: "#FF2D78" }}>social distinction.</span> It describes the way people set themselves apart from others in order to elevate their own social status.
-            </p>
-            <p
-              className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white mb-5 md:mb-[1.6em]"
-              style={{ fontFamily: READABLE }}
-            >
-              This creates inequality, envy, and self-doubt.
-            </p>
-            <div className="border-t border-[#FF2D78] my-8 md:my-[2.5vw] opacity-40" />
-            <p
-              className="text-2xl sm:text-3xl md:text-[3.2vw] font-black uppercase text-white leading-[1.1] tracking-[-0.03em] mb-2"
-              style={{ fontFamily: ARIAL }}
-            >
-              We do it differently.
-            </p>
-            <p
-              className="text-sm sm:text-base md:text-[1.65vw] leading-[1.75] text-white opacity-65"
-              style={{ fontFamily: READABLE }}
-            >
-              We meet each other as equals — confident, yet always respectful.
-            </p>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
