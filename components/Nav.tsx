@@ -19,7 +19,7 @@ export default function Nav() {
           href="/"
           className="font-heading text-xl tracking-widest uppercase text-white"
         >
-          Bridge 'n' Bass
+          {"Bridge 'n' Bass"}
         </Link>
 
         {/* Desktop links */}

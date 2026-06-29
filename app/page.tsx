@@ -39,9 +39,9 @@ export default function Home() {
     <div className="bg-black min-h-screen" style={{ fontFamily: ARIAL, color: PINK }}>
 
       {/* ── Header ── */}
-      <header className="flex justify-center items-center px-4 sm:px-[4vw] py-[8vw]">
+      <header className="flex justify-center items-center px-4 sm:px-[4vw] py-[10vw] sm:py-[8vw]">
         <span
-          className="text-[18vw] sm:text-[12vw] font-black uppercase leading-none tracking-[-0.04em]"
+          className="text-[22vw] sm:text-[14vw] lg:text-[10vw] font-black uppercase leading-none tracking-[-0.04em]"
           style={{ fontFamily: ARIAL, color: PINK }}
         >
           Musubi
@@ -49,22 +49,20 @@ export default function Home() {
       </header>
 
       {/* ── Hero / Manifesto ── */}
-      <section className="px-4 sm:px-[4vw] pt-[2vw] pb-[12vw] border-b border-[#1a1a1a] flex justify-center">
+      <section className="px-4 sm:px-[4vw] pt-6 sm:pt-[2vw] pb-[16vw] sm:pb-[12vw] border-b border-[#1a1a1a] flex flex-col items-center gap-6">
+        <span
+          className="text-[clamp(14px,2vw,28px)] font-black uppercase tracking-[0.05em] text-center"
+          style={{ fontFamily: ARIAL, color: PINK }}
+        >
+          Willkommen bei Musubi
+        </span>
         <p
-          className="text-[clamp(13px,1.5vw,22px)] leading-[1.9] max-w-[680px] text-center"
+          className="text-[clamp(14px,1.5vw,22px)] leading-[1.9] max-w-[680px] text-center px-2 sm:px-0"
           style={{ fontFamily: READABLE, color: PINK }}
         >
-          Willkommen bei Musubi.
+          Wir sind ein Berliner Kollektiv, das sich gegen Hierarchien und soziale Distinktion richtet.
           <br /><br />
-          Kennst du dieses Gefühl? Die Partyszene fühlt sich oft an, als wäre sie für jemand anderen gemacht — für Menschen, die aus der Masse herausstechen, die eine Aura der Unnahbarkeit mit sich tragen. Sie vermeiden es, jemanden anzuschauen, oder wenn doch, starren sie direkt, als wärst du erst jetzt ihrer Aufmerksamkeit würdig.
-          <br /><br />
-          Was bringt uns dazu, so zu handeln?
-          <br /><br />
-          In der Soziologie gibt es einen Begriff dafür: <span style={{ fontWeight: "bold" }}>soziale Distinktion.</span> Sie beschreibt, wie Menschen sich von anderen abheben, um ihren eigenen sozialen Status zu erhöhen. Das erzeugt Ungleichheit, Neid und Selbstzweifel.
-          <br /><br />
-          Wir machen es anders. Wir begegnen uns auf Augenhöhe — selbstbewusst, aber immer respektvoll.
-          <br /><br />
-          Unsere Floors sind bewusst ohne erhöhte Bereiche gestaltet – keine Backstage-Areas, keine VIP-Tische, kein „besserer Platz" für irgendwen.
+          Unsere Floors sind bewusst ohne erhöhte Bereiche gestaltet – keine Backstage-Areas, keine VIP-Tische, kein {`„besserer Platz"`} für irgendwen.
           <br /><br />
           Bei uns stehen alle auf derselben Ebene. So entsteht ein Raum, den jede*r gleich nutzen, erleben und betreten kann. Wir feiern gemeinsam statt getrennt – offen, respektvoll und auf Augenhöhe.
         </p>
@@ -89,18 +87,6 @@ export default function Home() {
           </span>
         </div>
 
-        {/* Video */}
-        <div className="mb-[4vw] flex justify-center">
-          <video
-            src="/phase1-recap.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full max-w-[480px]"
-            style={{ mixBlendMode: "screen" }}
-          />
-        </div>
 
         {/* Location label */}
         <div className="mb-[3vw]">
@@ -113,7 +99,7 @@ export default function Home() {
         </div>
 
         {/* Masonry photo grid */}
-        <div className="columns-2 sm:columns-3 lg:columns-4 gap-2 sm:gap-3">
+        <div className="columns-2 sm:columns-3 lg:columns-4 gap-2 sm:gap-3 w-full">
           {GERDA_PHOTOS.map((src, i) => (
             <div
               key={src}
@@ -148,7 +134,7 @@ export default function Home() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="px-4 sm:px-[4vw] py-8 flex flex-col sm:flex-row sm:justify-between sm:items-end border-t border-[#1a1a1a] gap-6 sm:gap-0">
+      <footer className="px-4 sm:px-[4vw] py-10 sm:py-8 flex flex-col sm:flex-row sm:justify-between sm:items-end border-t border-[#1a1a1a] gap-6 sm:gap-0">
         <div
           className="text-[10px] tracking-[0.2em] uppercase opacity-60 leading-relaxed"
           style={{ fontFamily: MONO, color: PINK }}
@@ -157,7 +143,7 @@ export default function Home() {
         </div>
         <button
           onClick={() => setBePart(true)}
-          className="border-none cursor-pointer font-black tracking-[0.05em] uppercase text-sm px-6 py-3 leading-none self-start sm:self-auto transition-opacity hover:opacity-70"
+          className="border-none cursor-pointer font-black tracking-[0.05em] uppercase text-sm px-6 py-4 sm:py-3 leading-none self-start sm:self-auto transition-opacity hover:opacity-70"
           style={{ fontFamily: ARIAL, color: PINK, background: "transparent", outline: `1px solid ${PINK}` }}
         >
           BE PART OF IT

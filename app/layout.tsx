@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Space_Mono, Bodoni_Moda, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
 
 const bebasNeue = Bebas_Neue({
   subsets: ["latin"],

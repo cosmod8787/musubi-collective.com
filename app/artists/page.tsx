@@ -131,7 +131,7 @@ export default function ArtistsPage() {
       <footer className="border-t border-border py-10 px-4 sm:px-6 md:px-16 bg-surface">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <Link href="/" className="font-heading text-xl tracking-widest uppercase text-sand">
-            Bridge 'n' Bass
+            {"Bridge 'n' Bass"}
           </Link>
           <p className="font-body text-xs text-concrete">
             Berlin, Deutschland — collectiveformatx@gmail.com
